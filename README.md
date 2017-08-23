@@ -6,7 +6,9 @@ YokaiSecurityExtraBundle
 [![Total Downloads](https://poser.pugx.org/yokai/security-extra-bundle/downloads)](https://packagist.org/packages/yokai/security-extra-bundle)
 [![License](https://poser.pugx.org/yokai/security-extra-bundle/license)](https://packagist.org/packages/yokai/security-extra-bundle)
 
-todo badges
+[![Build Status](https://api.travis-ci.org/yokai-php/security-extra-bundle.png?branch=master)](https://travis-ci.org/yokai-php/security-extra-bundle)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/yokai-php/security-extra-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/yokai-php/security-extra-bundle/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/yokai-php/security-extra-bundle/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/yokai-php/security-extra-bundle/?branch=master)
 
 
 Installation
