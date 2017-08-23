@@ -2,7 +2,6 @@
 
 namespace Yokai\SecurityExtraBundle\Tests\Voter;
 
-use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\VoterInterface;
@@ -13,7 +12,7 @@ use Yokai\SecurityExtraBundle\Voter\CallableCollectionVoter;
 /**
  * @author Yann Eugoné <eugone.yann@gmail.com>
  */
-class CallableCollectionVoterTest extends TestCase
+class CallableCollectionVoterTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @test

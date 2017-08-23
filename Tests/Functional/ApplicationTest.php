@@ -75,6 +75,7 @@ class ApplicationTest extends KernelTestCase
         $this->assertNotGranted('publish', $draftArticleByJohn);
         $this->assertNotGranted('delete', $draftArticleByJohn);
     }
+
     /**
      * @test
      */
