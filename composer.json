@@ -1,0 +1,29 @@
+{
+    "name": "yokai/security-extra-bundle",
+    "description": "Symfony security extra features",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yann Eugoné",
+            "email": "eugone.yann@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "symfony/framework-bundle": "~2.8|~3.0",
+        "symfony/security-bundle": "~2.8|~3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.*",
+        "symfony/yaml": "~2.8|~3.0"
+    },
+    "autoload": {
+        "psr-4": { "Yokai\\SecurityExtraBundle\\": "" }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

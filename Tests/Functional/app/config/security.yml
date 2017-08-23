@@ -1,0 +1,10 @@
+
+security:
+    providers:
+        in_memory:
+            memory: ~
+    firewalls:
+        main:
+            anonymous: ~
+    access_decision_manager:
+        strategy: unanimous

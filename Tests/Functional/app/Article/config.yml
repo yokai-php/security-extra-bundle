@@ -1,0 +1,36 @@
+imports:
+    - { resource: ../config/default.yml }
+
+yokai_security_extra:
+    permissions:
+
+        - attributes: 'browse'
+          roles:      ROLE_ARTICLE_READ
+
+        - attributes: 'details'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Article
+          roles:      ROLE_ARTICLE_READ
+
+        - attributes: 'create'
+          roles:      ROLE_ARTICLE_WRITE
+
+        - attributes: 'update'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Article
+          roles:      ROLE_ARTICLE_WRITE
+
+        - attributes: 'publish'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Article
+          roles:      ROLE_ARTICLE_WRITE
+          callables:  [ '@repository.article', isPublishable ]
+
+        - attributes: 'delete'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Article
+          roles:      ROLE_ARTICLE_WRITE
+
+        - attributes: [ 'update', 'publish', 'delete' ]
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Article
+          callables:  'isOwnedBy'
+
+services:
+    repository.article:
+        class: Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Repository\ArticleRepository

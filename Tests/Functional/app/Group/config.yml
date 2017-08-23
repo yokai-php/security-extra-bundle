@@ -1,0 +1,25 @@
+imports:
+    - { resource: ../config/default.yml }
+
+yokai_security_extra:
+    permissions:
+
+        - attributes: 'join'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Group
+          callables:  [ '@repository.membership', canJoin ]
+
+        - attributes: 'leave'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Group
+          callables:  [ '@repository.membership', canLeave ]
+
+        - attributes: 'send_message'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Group
+          callables:  [ '@repository.membership', isMember ]
+
+        - attributes: 'close'
+          subjects:   Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Entity\Group
+          callables:  [ '@repository.membership', isAdministrator ]
+
+services:
+    repository.membership:
+        class: Yokai\SecurityExtraBundle\Tests\Functional\Fixtures\Repository\UserGroupMembershipRepository
