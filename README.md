@@ -1,6 +1,11 @@
 YokaiSecurityExtraBundle
 ========================
 
+[![Latest Stable Version](https://poser.pugx.org/yokai/security-extra-bundle/v/stable)](https://packagist.org/packages/yokai/security-extra-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/yokai/security-extra-bundle/v/unstable)](https://packagist.org/packages/yokai/security-extra-bundle)
+[![Total Downloads](https://poser.pugx.org/yokai/security-extra-bundle/downloads)](https://packagist.org/packages/yokai/security-extra-bundle)
+[![License](https://poser.pugx.org/yokai/security-extra-bundle/license)](https://packagist.org/packages/yokai/security-extra-bundle)
+
 todo badges
 
 
