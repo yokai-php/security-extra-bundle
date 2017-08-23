@@ -195,7 +195,12 @@ class CallableCollectionVoter extends Voter
 
         // iterating over all parameters for method
         foreach ($reflection->getParameters() as $parameter) {
-            $parameterType = $parameter->getType()->getName();
+            $parameterType = $parameter->getType();
+            if (method_exists($parameterType, 'getName')) {
+                $parameterType = $parameterType->getName();
+            } else {
+                $parameterType = (string) $parameterType; // PHP < 7.1 supports
+            }
             $parameterName = $parameter->getName();
             $parameterPosition = $parameter->getPosition();
             switch (true) {
