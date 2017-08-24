@@ -90,7 +90,7 @@ class YokaiSecurityExtraExtension extends Extension
     /**
      * @param string $string
      *
-     * @return string
+     * @return string|Reference
      */
     private function replaceWithReference(string $string)
     {

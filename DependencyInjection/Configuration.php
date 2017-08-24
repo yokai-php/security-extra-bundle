@@ -41,11 +41,7 @@ class Configuration implements ConfigurationInterface
                 return true;
             }
 
-            if (isset($value[0]) && is_string($value[0]) && isset($value[1]) && is_string($value[1])) {
-                return true;
-            }
-
-            return false;
+            return isset($value[0]) && is_string($value[0]) && isset($value[1]) && is_string($value[1]);
         };
         $toArray = function ($value) {
             return [$value];

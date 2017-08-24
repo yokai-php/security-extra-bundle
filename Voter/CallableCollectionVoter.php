@@ -4,7 +4,6 @@ namespace Yokai\SecurityExtraBundle\Voter;
 
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Yokai\SecurityExtraBundle\Exception\LogicException;
 
 /**
@@ -15,28 +14,28 @@ class CallableCollectionVoter extends Voter
     /**
      * Attribute list this is supporting.
      *
-     * @var string[]
+     * @var array<string>
      */
     private $supportedAttributes;
 
     /**
      * Subject types list this is supporting.
      *
-     * @var string[]
+     * @var array<string>
      */
     private $supportedSubjects;
 
     /**
      * Callable collection this must call.
      *
-     * @var callable[]
+     * @var array<mixed>
      */
     private $callables;
 
     /**
-     * @param string[]   $supportedAttributes Attribute list this is supporting
-     * @param string[]   $supportedSubjects   Subject types list this is supporting
-     * @param callable[] $callables           Callable collection this must call
+     * @param array<string> $supportedAttributes Attribute list this is supporting
+     * @param array<string> $supportedSubjects   Subject types list this is supporting
+     * @param array<mixed>  $callables           Callable collection this must call
      */
     public function __construct($supportedAttributes, $supportedSubjects, $callables)
     {
@@ -118,7 +117,7 @@ class CallableCollectionVoter extends Voter
      * @param mixed               $subject  The subject being voting on
      *
      * @return array The normalized callable
-     * @throws \Exception
+     * @throws LogicException
      */
     private function normalizeCallable($callable, $subject)
     {
@@ -179,8 +178,8 @@ class CallableCollectionVoter extends Voter
      * @param mixed          $subject   The subject being voting on
      * @param TokenInterface $token     The authentication being voting for
      *
-     * @return array The parameters list
-     * @throws \Exception
+     * @return array<mixed> The parameters list
+     * @throws LogicException
      */
     private function gatherParameters($callable, $attribute, $subject, TokenInterface $token)
     {
