@@ -47,7 +47,7 @@ class YokaiSecurityExtraExtension extends Extension
 
         if (count($roles) > 0) {
             $callbackDefinition = (new Definition(HasRoles::class))
-                ->setArguments([new Reference('security.role_hierarchy'), $roles])
+                ->setArguments([new Reference('security.access.decision_manager'), $roles])
                 ->setPublic(false)
             ;
 

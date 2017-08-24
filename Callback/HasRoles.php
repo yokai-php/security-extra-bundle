@@ -3,8 +3,7 @@
 namespace Yokai\SecurityExtraBundle\Callback;
 
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
-use Symfony\Component\Security\Core\Role\Role;
-use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
+use Symfony\Component\Security\Core\Authorization\AccessDecisionManagerInterface;
 
 /**
  * @author Yann Eugoné <eugone.yann@gmail.com>
@@ -12,10 +11,10 @@ use Symfony\Component\Security\Core\Role\RoleHierarchyInterface;
 class HasRoles
 {
     /**
-     * The role hierarchy.
-     * @var RoleHierarchyInterface
+     * Symfony's Security decision manager
+     * @var AccessDecisionManagerInterface
      */
-    private $roleHierarchy;
+    private $decisionManager;
 
     /**
      * The roles that must be accessible.
@@ -24,12 +23,12 @@ class HasRoles
     private $roles;
 
     /**
-     * @param RoleHierarchyInterface $roleHierarchy The role hierarchy
+     * @param AccessDecisionManagerInterface $decisionManager The role hierarchy
      * @param string[]               $roles         The roles that must be accessible
      */
-    public function __construct(RoleHierarchyInterface $roleHierarchy, $roles)
+    public function __construct(AccessDecisionManagerInterface $decisionManager, $roles)
     {
-        $this->roleHierarchy = $roleHierarchy;
+        $this->decisionManager = $decisionManager;
         $this->roles = $roles;
     }
 
@@ -42,25 +41,6 @@ class HasRoles
      */
     public function __invoke(TokenInterface $token)
     {
-        // extract and normalize roles from hierarchy
-        $roles = array_map(
-            function (Role $role) {
-                return $role->getRole();
-            },
-            $this->roleHierarchy->getReachableRoles($token->getRoles())
-        );
-
-        // iterating over all configured roles
-        // if a single role is missing this will return false
-        foreach ($this->roles as $role) {
-            if (!in_array($role, $roles, true)) {
-                return false;
-            }
-        }
-
-        // all configured roles are accessible to the security token
-        // return true
-
-        return true;
+        return $this->decisionManager->decide($token, $this->roles);
     }
 }
